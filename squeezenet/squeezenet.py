@@ -28,11 +28,13 @@ def fire_module(layer, fire_id, squeeze=16, expand=64, dim_ordering='th'):
     return x
 
 
-def squeezenet(classes, dim_ordering='th'):
+def squeezenet(classes, dim_ordering='th', shape=(3,227,227)):
+    # th -> (channel, width, height)
+    # tf -> (width, height, channel)
     if dim_ordering is 'th':
-        input_img = Input(shape=(3, 227, 227))
+        input_img = Input(shape=shape)
     elif dim_ordering is 'tf':
-        input_img = Input(shape=(227, 227, 3))
+        input_img = Input(shape=shape)
     else:
         raise NotImplementedError("Theano and Tensorflow are only available")
 

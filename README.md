@@ -10,6 +10,9 @@ download the squeezenet.py file, then
 ```python
 from squeezenet import squeezenet
 
+# th -> (channel, width, height)
+# tf -> (width, height, channel)
+
 model = squeezenet(classes=10, dim_ordering='th')
 model.compile(...)
 model.fit(...)
