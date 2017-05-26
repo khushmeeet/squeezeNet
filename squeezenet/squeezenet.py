@@ -9,6 +9,17 @@ biases = {'conv1': tf.Variable(tf.truncated_normal([96])),
 
 
 def fire_module(input, fire_id, s1=16, e1=64, e3=64):
+    '''
+    Basic module that makes up the SqueezeNet architecture. It has two layers.
+     1. Squeeze layer (1x1 convolutions)
+     2. Expand layer (1x1 and 3x3 convolutions)
+    :param input: Tensorflow tensor
+    :param fire_id: Variable scope name
+    :param s1: Number of filters for squeeze 1x1 layer
+    :param e1: Number of filters for expand 1x1 layer
+    :param e3: Number of filters for expand 3x3 layer
+    :return: Tensorflow tensor
+    '''
     fire_weights = {'conv_s_1': tf.Variable(tf.truncated_normal([1, 1, 1, s1])),
                     'conv_e_1': tf.Variable(tf.truncated_normal([1, 1, 1, e1])),
                     'conv_e_3': tf.Variable(tf.truncated_normal([3, 3, 1, e3]))}
@@ -32,6 +43,12 @@ def fire_module(input, fire_id, s1=16, e1=64, e3=64):
 
 
 def squeeze_net(input):
+    '''
+    SqueezeNet model written in tensorflow. It provides AlexNet level accuracy with 50x fewer parameters
+    and smaller model size.
+    :param input: Input tensor (4D)
+    :return: Tensorflow tensor
+    '''
     output = tf.nn.conv2d(input, weights['conv1'], strides=[1,2,2,1], padding='SAME', name='conv1')
     output = tf.nn.bias_add(output, biases['conv1'])
 
