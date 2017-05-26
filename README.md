@@ -10,10 +10,8 @@ Do `pip install squeezenet`
 ```python
 from squeezenet import squeezenet
 
-# th -> (channel, width, height)
-# tf -> (width, height, channel)
-
-model = squeezenet(input)
+input = ...
+output = squeezenet.squeeze_net(input)
 # returns the computed tensor
 ```
 
