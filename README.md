@@ -11,8 +11,9 @@ Do `pip install squeezenet`
 from squeezenet import squeezenet
 
 input = ...
-output = squeezenet.squeeze_net(input)
+output = squeezenet.squeeze_net(input, classes=output_classes)
 # returns the computed tensor
+# specify softmax function, cost and optimizer
 ```
 
 # TODO
