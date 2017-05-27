@@ -29,5 +29,8 @@ setup(
   url='https://github.com/Khushmeet/squeezeNet',
   download_url='https://github.com/Khushmeet/squeezeNet/tarball/1.0',
   keywords=['Deep learning', 'Tensorflow', 'Convolutional', 'Neural network', 'SqueezeNet'],
+  install_requires=[
+   'tensorflow'
+  ],
   classifiers=[],
 )
