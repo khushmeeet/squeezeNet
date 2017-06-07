@@ -23,7 +23,7 @@ def fire_module(input, fire_id, channel, s1, e1, e3,):
                    'conv_e_1': tf.Variable(tf.truncated_normal([e1])),
                    'conv_e_3': tf.Variable(tf.truncated_normal([e3]))}
 
-    with tf.variable_scope(fire_id):
+    with tf.name_scope(fire_id):
         output = tf.nn.conv2d(input, fire_weights['conv_s_1'], strides=[1, 1, 1, 1], padding='SAME', name='conv_s_1')
         output = tf.nn.relu(tf.nn.bias_add(output, fire_biases['conv_s_1']))
 
